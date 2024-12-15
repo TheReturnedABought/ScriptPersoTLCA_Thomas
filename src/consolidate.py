@@ -13,12 +13,13 @@ def consolidate_csv(test_dir, consolidated_file):
     - str: A message indicating success or the encountered issue.
     """
     if not os.path.isdir(test_dir):
-        return "Error: The specified directory does not exist. Please enter a valid directory."
+        print("Error: The specified directory does not exist. Please enter a valid directory.")
+        return 1
 
     all_files = [f for f in os.listdir(test_dir) if f.endswith('.csv')]
     if not all_files:
-        return "Error: No CSV files found in the specified directory."
-
+        print("Error: No CSV files found in the specified directory.")
+        return 1
     df_list = []
 
     for file in all_files:
@@ -31,12 +32,16 @@ def consolidate_csv(test_dir, consolidated_file):
                 print(f"Warning: {file} is empty.")
         except pd.errors.EmptyDataError:
             print(f"Error: {file} is empty or not readable.")
+            return 1
         except Exception as e:
             print(f"Error reading {file}: {e}")
+            return 1
 
     if df_list:
         consolidated_df = pd.concat(df_list, ignore_index=True)
         consolidated_df.to_csv(consolidated_file, index=False)
-        return f"Success: Consolidated CSV saved to {consolidated_file}."
+        print(f"Success: Consolidated CSV saved to {consolidated_file}.")
+        return 0
     else:
-        return "Error: No valid data to consolidate. All files are empty or unreadable."
+        print("Error: No valid data to consolidate. All files are empty or unreadable.")
+        return 1
