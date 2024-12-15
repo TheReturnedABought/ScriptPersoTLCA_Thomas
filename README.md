@@ -1,25 +1,100 @@
-Aperçu des scripts
-Ce projet se compose de trois scripts Python principaux qui fournissent différentes fonctionnalités pour traiter les fichiers CSV :
+Aperçu du projet
 
-search.py :
+Ce projet fournit trois scripts Python pour gérer et analyser les fichiers CSV :
 
-Objectif : recherche d'une requête spécifique dans une colonne donnée d'un fichier CSV.
-Fonction clé : search_inventory(file : str, column : str, query : str)
-Prend en entrée le chemin d'accès au fichier, le nom de la colonne et la requête de recherche.
-Elle produit les lignes qui correspondent à la requête ou un message d'erreur si elles n'ont pas été trouvées.
+search.py : Recherche des valeurs spécifiques dans une colonne d'un fichier CSV.
 
-report.py :
+report.py : Génère un rapport de synthèse statistique pour un fichier CSV.
 
-Objet : Génère un rapport statistique à partir d'un fichier CSV.
-Fonction clé : generate_report(file : str, output_file : str)
-Lit le fichier d'entrée et crée un rapport enregistré dans le fichier de sortie.
-Inclut des descriptions statistiques de toutes les colonnes.
+consolidate.py : Consolide plusieurs fichiers CSV d'un répertoire en un seul fichier CSV.
 
-consolidate.py :
+Chaque script est accompagné de tests unitaires permettant de valider ses fonctionnalités.
 
-Objectif : consolider plusieurs fichiers CSV d'un répertoire en un seul fichier CSV.
-Fonction clé : consolidate_csv(test_dir : str, consolidated_file : str)
-Combine tous les fichiers CSV non vides dans le répertoire spécifié.
-Enregistre le résultat consolidé dans le fichier consolidé.
+Installation de l'application
 
-Traduit avec DeepL.com (version gratuite)
+Prérequis
+
+Python 3.7+
+
+bibliothèque pandas
+
+Etapes
+
+Clonez ce dépôt :
+
+git clone <repository-url>
+cd <référentiel-répertoire>
+
+Installez les dépendances nécessaires :
+
+pip install pandas
+
+Assurez-vous que les scripts et les fichiers de test sont dans le même répertoire.
+
+Utilisation
+
+0. main.py
+Pour exécuter le script, faites un clic droit sur le fichier et cliquez sur run dans la ligne de commande, puis tapez python ./src/main.py et cliquez sur enter. vous aurez accès à différentes options. 
+
+1. search.py
+
+Description de l'application
+
+Recherche dans un fichier CSV les lignes correspondant à une requête spécifique dans une colonne donnée.
+
+Fonction
+
+search_inventory(file : str, column : str, query : str)
+
+file : Chemin d'accès au fichier CSV.
+
+column : Nom de la colonne dans laquelle effectuer la recherche.
+
+query : Chaîne de requête à rechercher.
+
+Exemple en code :
+
+search_inventory('exemple.csv', 'nom', 'chaise')
+
+
+2. report.py
+
+Description de l'application
+
+Génère un rapport de synthèse pour les données d'un fichier CSV.
+
+Fonction
+
+generate_report(file : str, output_file : str)
+
+file : Chemin d'accès au fichier CSV d'entrée.
+
+fichier_de_sortie : Chemin d'accès pour enregistrer le rapport généré.
+
+Exemple en code :
+
+generate_report('example.csv', 'summary.csv')
+
+
+3. consolider.py
+
+Description de l'application
+
+Combine tous les fichiers CSV d'un répertoire spécifié en un seul fichier CSV.
+
+
+Fonction
+
+consolidate_csv(test_dir : str, consolidated_file : str)
+
+test_dir : Chemin d'accès au répertoire contenant les fichiers CSV.
+
+fichier_consolidé : Chemin d'accès pour enregistrer le fichier consolidé.
+
+
+Exemple en code :
+
+consolidate_csv('csv_folder', 'consolidated.csv')
+
+
+
