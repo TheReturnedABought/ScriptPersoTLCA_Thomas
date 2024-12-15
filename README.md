@@ -34,9 +34,10 @@ Assurez-vous que les scripts et les fichiers de test sont dans le même réperto
 Utilisation
 
 0. main.py
+   
 Pour exécuter le script, faites un clic droit sur le fichier et cliquez sur run dans la ligne de commande, puis tapez python ./src/main.py et cliquez sur enter. vous aurez accès à différentes options. 
 
-1. search.py
+2. search.py
 
 Description de l'application
 
