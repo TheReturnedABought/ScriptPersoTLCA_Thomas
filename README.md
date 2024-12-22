@@ -1,101 +1,39 @@
-Aperçu du projet
+Ce projet fournit un système automatisé de gestion d'inventaire permettant de consolider des fichiers CSV, de rechercher des enregistrements d'inventaire et de générer des rapports statistiques. Toutes les fonctionnalités sont accessibles via une interface de ligne de commande.
 
-Ce projet fournit trois scripts Python pour gérer et analyser les fichiers CSV :
+Ce programme consolide plusieurs fichiers CSV en un seul fichier, recherche les données d'inventaire sur la base de colonnes et de requêtes spécifiées, génère des rapports statistiques au format CSV et fournit une interface de ligne de commande simple et efficace pour des opérations rapides.
 
-search.py : Recherche des valeurs spécifiques dans une colonne d'un fichier CSV.
+Pour l'installer, clonez d'abord ce dépôt en exécutant :
 
-report.py : Génère un rapport de synthèse statistique pour un fichier CSV.
+git clone (https://github.com/TheReturnedABought/ScriptPersoTLCA_Thomas) cd <répertoire_du_référentiel>
 
-consolidate.py : Consolide plusieurs fichiers CSV d'un répertoire en un seul fichier CSV.
-
-Chaque script est accompagné de tests unitaires permettant de valider ses fonctionnalités.
-
-Installation de l'application
-
-Prérequis
-
-Python 3.7+
-
-bibliothèque pandas
-
-Etapes
-
-Clonez ce dépôt :
-
-git clone <repository-url>
-cd <référentiel-répertoire>
-
-Installez les dépendances nécessaires :
+Ensuite, installez les dépendances à l'aide de pip :
 
 pip install pandas
 
-Assurez-vous que les scripts et les fichiers de test sont dans le même répertoire.
+Pour consolider les fichiers, utilisez la commande suivante :
 
-Utilisation
+python main.py consolidate --input <chemin_du_répertoire> --output <fichier_de_sortie>.
 
-0. main.py
-   
-Pour exécuter le script, faites un clic droit sur le fichier et cliquez sur run dans la ligne de commande, puis tapez python ./src/main.py et cliquez sur enter. vous aurez accès à différentes options. 
+Par exemple :
 
-2. search.py
+python main.py consolidate --input ./data --output consolidated_inventory.csv
 
-Description de l'application
+Pour effectuer une recherche dans l'inventaire, utilisez la commande suivante :
 
-Recherche dans un fichier CSV les lignes correspondant à une requête spécifique dans une colonne donnée.
+python main.py search --input <file_path> --column <column_name> --query <search_query>
 
-Fonction
+Par exemple :
 
-search_inventory(file : str, column : str, query : str)
+python main.py search --input consolidated_inventory.csv --column nom_du_produit --query chaise
 
-file : Chemin d'accès au fichier CSV.
+Pour générer un rapport, utilisez la commande suivante :
 
-column : Nom de la colonne dans laquelle effectuer la recherche.
+python main.py report --input <file_path> --output <report_file>
 
-query : Chaîne de requête à rechercher.
+Par exemple :
 
-Exemple en code :
+python main.py report --input consolidated_inventory.csv --output inventory_report.csv
 
-search_inventory('exemple.csv', 'nom', 'chaise')
+Pour valider les fonctionnalités, exécutez les tests unitaires :
 
-
-2. report.py
-
-Description de l'application
-
-Génère un rapport de synthèse pour les données d'un fichier CSV.
-
-Fonction
-
-generate_report(file : str, output_file : str)
-
-file : Chemin d'accès au fichier CSV d'entrée.
-
-fichier_de_sortie : Chemin d'accès pour enregistrer le rapport généré.
-
-Exemple en code :
-
-generate_report('example.csv', 'summary.csv')
-
-
-3. consolider.py
-
-Description de l'application
-
-Combine tous les fichiers CSV d'un répertoire spécifié en un seul fichier CSV.
-
-
-Fonction
-
-consolidate_csv(test_dir : str, consolidated_file : str)
-
-test_dir : Chemin d'accès au répertoire contenant les fichiers CSV.
-
-fichier_consolidé : Chemin d'accès pour enregistrer le fichier consolidé.
-
-
-Exemple en code :
-
-consolidate_csv('csv_folder', 'consolidated.csv')
-
-
-
+python -m unittest unittestmain.py
